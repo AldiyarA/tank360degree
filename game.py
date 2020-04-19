@@ -77,7 +77,6 @@ class Tank():
                     self.time=0
                     if self.armo>0:
                         FireSound.play()
-                        # R, G, B = ri(0, 255), ri(0, 255), ri(0, 255)
                         b = Bullet(self.center[0]+int(2*self.size*math.cos(self.cannondegree*Grad)), self.center[1]+ 2*self.size*math.sin(self.cannondegree*Grad), self.cannondegree, self.color, self)
                         self.armo -= 1
                         b.attack = True
