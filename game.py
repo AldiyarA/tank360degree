@@ -1,6 +1,5 @@
 import pygame
 import math
-# from random import randint as ri
 pygame.init()
 screen_x = 800
 screen_y = 600
@@ -8,9 +7,8 @@ screen = pygame.display.set_mode((screen_x, screen_y))
 font = pygame.font.SysFont('Times new roman', 32)
 Grad = math.pi/180
 bullets = []
-goSound1 = pygame.mixer.Sound ("C:\\Users\\Aldiyar\\Desktop\\\u0420\u0420\\pp2\\tank1000\\move.wav")
-FireSound = pygame.mixer.Sound ("C:\\Users\\Aldiyar\\Desktop\\\u0420\u0420\\pp2\\tank1000\\fire.wav")
-#goSound = pygame.mixer.music.load ("C:\\Users\\Aldiyar\\Desktop\\\u0420\u0420\\pp2\\tank1000\\GO.mp3")
+goSound1 = pygame.mixer.Sound ("move.wav")
+FireSound = pygame.mixer.Sound ("fire.wav")
 class Tank():
     def __init__(self, x, y, color, keys, infocoor, speed):
         self.center =[x, y]
@@ -41,9 +39,6 @@ class Tank():
             armotext = font.render('ARMO:'+ str(self.armo), True, self.color)
             screen.blit(scoretext, self.infocoor)
             screen.blit(armotext, (self.infocoor[0], self.infocoor[1]+35))
-        else:
-            losertext = font.render('L O S E R', True, self.color)
-            screen.blit(losertext, self.infocoor)
     def move(self, a):
         if self.hp>0:
             self.coordinate =[[self.size*math.cos(self.degrees*Grad)+self.center[0], self.size*math.sin(self.degrees*Grad)+self.center[1]], [self.size*math.cos((self.degrees+90)*Grad)+self.center[0], self.size*math.sin((self.degrees+90)*Grad)+self.center[1]], [self.size*math.cos((self.degrees+180)*Grad)+self.center[0], self.size*math.sin((self.degrees+180)*Grad)+self.center[1]], [self.size*math.cos((self.degrees+270)*Grad)+self.center[0], self.size*math.sin((self.degrees+270)*Grad)+self.center[1]]]
@@ -140,7 +135,6 @@ while run:
                     tanks[i].mvu = False
                 if (tanks[i].center[0]-tanks[j].center[0]-tanks[i].dx)**2+(tanks[i].center[1]-tanks[j].center[1]-tanks[i].dy)**2<(tanks[i].size+tanks[j].size)**2:
                     tanks[i].mvd = False
-
     for i in range(0,len(bullets)-1):
         for j in range(i+1, len(bullets)):
             try:
