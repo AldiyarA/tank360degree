@@ -18,7 +18,7 @@ class Tank():
         self.cannondegree = 90
         self.keys = keys
         self.mvu, self.mvd = True, True
-        self.armo = 100
+        self.ammo = 100
         self.speed = speed
         self.hp, self.score = 10, 0
         self.time = 30
@@ -36,7 +36,7 @@ class Tank():
     def selfinfo(self):
         if self.hp>0:    
             scoretext = font.render('SCORE:' + str(self.score)+ '  HP:'+str(self.hp), True, self.color)
-            armotext = font.render('ARMO:'+ str(self.armo), True, self.color)
+            armotext = font.render('AMMO:'+ str(self.armo), True, self.color)
             screen.blit(scoretext, self.infocoor)
             screen.blit(armotext, (self.infocoor[0], self.infocoor[1]+35))
     def move(self, a):
@@ -75,7 +75,7 @@ class Tank():
             elif a == self.keys[6]:
                 if self.time>1:
                     self.time=0
-                    if self.armo>0:
+                    if self.ammo>0:
                         FireSound.play()
                         b = Bullet(self.center[0]+int(2*self.size*math.cos(self.cannondegree*Grad)), self.center[1]+ 2*self.size*math.sin(self.cannondegree*Grad), self.cannondegree, self.color, self)
                         self.armo -= 1
